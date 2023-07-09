@@ -15,11 +15,12 @@ const MobileMenu = async ({ session, profile }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const signOut = async () => {
+  const signout = async () => {
     setLoading(true);
     await supabase.auth.signOut();
-    router.push("/login");
+    router.refresh();
     setLoading(false);
+    router.push("/login");
   };
 
   return (
@@ -87,11 +88,16 @@ const MobileMenu = async ({ session, profile }) => {
                       </div>
                     ))}
 
-                  <Menu.Item
-                    as='button'
-                    onClick={signOut}
-                    className='p-4 inline-flex justify-start ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
-                    {loading ? "SIGNING OUT..." : "SIGN OUT"}
+                  <Menu.Item>
+                    <button
+                      onClick={signout}
+                      className='p-4 inline-flex justify-start
+                      ui-active:bg-blue-500 ui-active:text-white
+                      ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600
+                      ui-not-active:text-black dark:ui-not-active:text-white
+                      shadow-lg'>
+                      {loading ? "SIGNING OUT..." : "SIGN OUT"}
+                    </button>
                   </Menu.Item>
 
                   <div className='w-full flex items-center justify-between'>
