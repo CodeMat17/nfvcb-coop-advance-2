@@ -9,6 +9,7 @@ import { BiMailSend } from "react-icons/bi";
 import { BsWhatsapp } from "react-icons/bs";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdCall, MdOutlineClose } from "react-icons/md";
+import { Fragment } from "react";
 
 const MobileMenu = async ({ session, profile }) => {
   const supabase = createClientComponentClient();
@@ -44,6 +45,7 @@ const MobileMenu = async ({ session, profile }) => {
               {/* Use the `Transition` component. */}
               <Transition
                 show={open}
+                as={Fragment}
                 enter='transition duration-100 ease-out'
                 enterFrom='transform scale-95 opacity-0'
                 enterTo='transform scale-100 opacity-100'
@@ -72,7 +74,7 @@ const MobileMenu = async ({ session, profile }) => {
 
                   {profile &&
                     profile.map((user) => (
-                      <Menu.Item key={user.id}>
+                      <Menu.Item as='div' key={user.id}>
                         {user.isAdmin && (
                           <Link
                             className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'
