@@ -16,10 +16,7 @@ const MobileMenu = async ({ session, profile }) => {
   const [loading, setLoading] = useState(false);
 
   const signout = async () => {
-    setLoading(true);
     await supabase.auth.signOut();
-    router.refresh();
-    setLoading(false);
     router.push("/login");
   };
 
@@ -77,13 +74,11 @@ const MobileMenu = async ({ session, profile }) => {
                     profile.map((user) => (
                       <Menu.Item key={user.id}>
                         {user.isAdmin && (
-                      
-                            <Link
-                              className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'
-                              href='/admin'>
-                              ADMIN
-                            </Link>
-                       
+                          <Link
+                            className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'
+                            href='/admin'>
+                            ADMIN
+                          </Link>
                         )}
                       </Menu.Item>
                     ))}
@@ -96,7 +91,7 @@ const MobileMenu = async ({ session, profile }) => {
                       ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600
                       ui-not-active:text-black dark:ui-not-active:text-white
                       shadow-lg'>
-                      {loading ? "SIGNING OUT..." : "SIGN OUT"}
+                      SIGN OUT
                     </button>
                   </Menu.Item>
 
