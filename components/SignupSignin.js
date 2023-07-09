@@ -82,6 +82,7 @@ const SignupSignin = () => {
           setError(error.message);
         }
         if (data) {
+          router.refresh()
           router.push("/");
         }
       } catch (error) {
