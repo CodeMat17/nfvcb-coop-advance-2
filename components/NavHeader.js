@@ -5,12 +5,8 @@ import ThemeButton from "@/components/ThemeButton";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-const NavHeader = async () => {
+const NavHeader = async ({session}) => {
   const supabase = createServerComponentClient({ cookies });
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -27,15 +23,10 @@ const NavHeader = async () => {
             <p>Advance</p>
           </div>
         </div>
-        <div className='flex items-center justify-center space-x-4'>
+        <div className='flex items-center space-x-4'>
           <ThemeButton />
-
-          {session && (
-            <div className='flex items-center space-x-2 text-[#F5D042] dark:text-white '>
-              <MobileMenu session={session} profile={profile} />
-              <DesktopMenu session={session} profile={profile} />
-            </div>
-          )}
+          <MobileMenu session={session} profile={profile} />
+          <DesktopMenu session={session} profile={profile} />
         </div>
       </div>
     </div>
