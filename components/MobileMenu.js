@@ -13,10 +13,10 @@ import { MdCall, MdOutlineClose } from "react-icons/md";
 const MobileMenu = async ({ session, profile }) => {
   const supabase = createClientComponentClient();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const signout = async () => {
     await supabase.auth.signOut();
+    router.refresh();
     router.push("/login");
   };
 
