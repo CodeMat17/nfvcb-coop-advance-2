@@ -1,5 +1,4 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+
 import NavHeader from "@/components/NavHeader";
 import { Figtree } from "next/font/google";
 import "./globals.css";
@@ -14,11 +13,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const supabase = createServerComponentClient({ cookies });
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
   
   return (
     <html
@@ -28,7 +22,7 @@ export default async function RootLayout({ children }) {
       suppressHydrationWarning>
       <body className={figtree.className}>
         <Providers>
-          <NavHeader session={session} />
+          <NavHeader />
           <main> {children}</main>
           <Footer />
         </Providers>

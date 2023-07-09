@@ -30,10 +30,11 @@ const MobileMenu = async ({ session, profile }) => {
             <>
               <div>
                 <Menu.Button
-                  className={`p-1 transition duration-200 text-4xl rounded-lg border ${open
+                  className={`p-1 transition duration-200 text-4xl rounded-lg border ${
+                    open
                       ? "border-red-900 text-red-600 transition rotate-[-90deg]"
                       : "border-blue-900 text-[#0870ad] transition"
-                    } `}>
+                  } `}>
                   {open ? (
                     <MdOutlineClose aria-hidden='true' />
                   ) : (
@@ -73,15 +74,17 @@ const MobileMenu = async ({ session, profile }) => {
 
                   {profile &&
                     profile.map((user) => (
-                      <Menu.Item key={user.id}>
+                      <div key={user.id}>
                         {user.isAdmin && (
-                          <Link
-                            href='/admin'
-                            className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
-                            ADMIN
-                          </Link>
+                          <Menu.Item>
+                            <Link
+                              href='/admin'
+                              className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
+                              ADMIN
+                            </Link>
+                          </Menu.Item>
                         )}
-                      </Menu.Item>
+                      </div>
                     ))}
 
                   <Menu.Item
@@ -118,7 +121,8 @@ const MobileMenu = async ({ session, profile }) => {
               </Transition>
             </>
           )}
-        </Menu>)}
+        </Menu>
+      )}
     </>
   );
 };
