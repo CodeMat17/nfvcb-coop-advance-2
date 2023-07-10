@@ -4,12 +4,11 @@ import { Menu, Transition } from "@headlessui/react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { Fragment } from "react";
 import { BiMailSend } from "react-icons/bi";
 import { BsWhatsapp } from "react-icons/bs";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdCall, MdOutlineClose } from "react-icons/md";
-import { Fragment } from "react";
 
 const MobileMenu = async ({ session, profile }) => {
   const supabase = createClientComponentClient();
@@ -55,11 +54,11 @@ const MobileMenu = async ({ session, profile }) => {
                 {/* Mark this component as `static` */}
                 <Menu.Items
                   static
-                  className='origin-top-right absolute right-0 flex flex-col mt-2 rounded-lg w-56 overflow-hidden shadow-2xl ring-1 ring-black ring-opacity-5 focus:ontline-none'>
+                  className='origin-top-right absolute right-0 transition-all duration-500 flex flex-col mt-2 rounded-lg w-56 overflow-hidden shadow-2xl ring-1 ring-black ring-opacity-5 focus:ontline-none'>
                   <Menu.Item>
                     <Link
                       href='/'
-                      className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
+                      className='transition duration-500 p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
                       HOME
                     </Link>
                   </Menu.Item>
@@ -67,28 +66,32 @@ const MobileMenu = async ({ session, profile }) => {
                   <Menu.Item>
                     <Link
                       href='/repay'
-                      className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
+                      className='transition duration-500 p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
                       REPAY
                     </Link>
                   </Menu.Item>
 
                   {profile &&
                     profile.map((user) => (
-                      <Menu.Item as='div' key={user.id}>
+                      <div key={user.id}>
                         {user.isAdmin && (
-                          <Link
-                            className='p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'
-                            href='/admin'>
-                            ADMIN
-                          </Link>
+                          <Menu.Item
+                            as='div'
+                            className='w-full ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600 ui-not-active:text-black dark:ui-not-active:text-white shadow-lg'>
+                            <button
+                              onClick={() => router.push("/admin")}
+                              className=' transition duration-500 w-full p-4 text-start'>
+                              ADMIN
+                            </button>
+                          </Menu.Item>
                         )}
-                      </Menu.Item>
+                      </div>
                     ))}
 
                   <Menu.Item>
                     <button
                       onClick={signout}
-                      className='p-4 inline-flex justify-start
+                      className='transition duration-500 p-4 inline-flex justify-start
                       ui-active:bg-blue-500 ui-active:text-white
                       ui-not-active:bg-gray-300 dark:ui-not-active:bg-gray-600
                       ui-not-active:text-black dark:ui-not-active:text-white
@@ -101,21 +104,21 @@ const MobileMenu = async ({ session, profile }) => {
                     <Menu.Item className='w-full'>
                       <a
                         href='tel:+2348079551587'
-                        className='w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
+                        className='transition duration-500 w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
                         <MdCall className={`  text-2xl font-semibold `} />
                       </a>
                     </Menu.Item>
                     <Menu.Item className='w-full'>
                       <a
                         href='mailto:nfvcbcoop@gmail.com'
-                        className='w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
+                        className='transition duration-500 w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
                         <BiMailSend className={`  text-2xl font-semibold `} />
                       </a>
                     </Menu.Item>
                     <Menu.Item className='w-full '>
                       <a
                         href='https://wa.me/2348079551587'
-                        className='w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
+                        className='transition duration-500 w-full inline-flex items-center justify-center p-4 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-gray-400 dark:ui-not-active:bg-gray-700 ui-not-active:text-black dark:ui-not-active:text-blue-500 shadow-lg'>
                         <BsWhatsapp className={`  text-2xl font-semibold `} />
                       </a>
                     </Menu.Item>

@@ -23,7 +23,7 @@ export default async function Home() {
     .eq("id", session.user.id);
 
   return (
-    <main className='flex min-h-[90vh] flex-col px-4 p-12'>
+    <main className='flex flex-col px-4 p-12'>
       <Toaster />
 
       {profiles &&

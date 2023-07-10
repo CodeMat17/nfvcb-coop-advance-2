@@ -1,9 +1,8 @@
-
+import Footer from "@/components/Footer";
 import NavHeader from "@/components/NavHeader";
 import { Figtree } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import Footer from "@/components/Footer";
 
 const figtree = Figtree({ subsets: ["latin"] });
 
@@ -13,7 +12,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  
   return (
     <html
       lang='en'
@@ -23,7 +21,7 @@ export default async function RootLayout({ children }) {
       <body className={figtree.className}>
         <Providers>
           <NavHeader />
-          <main> {children}</main>
+          <main className='min-h-[70vh]'> {children}</main>
           <Footer />
         </Providers>
       </body>

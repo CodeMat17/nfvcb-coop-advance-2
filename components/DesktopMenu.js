@@ -37,15 +37,14 @@ const DesktopMenu = ({ session, profile }) => {
 
             {profile &&
               profile.map((user) => (
-                <div key={user.id}            className='transition duration-500 font-semibold text-[#ecbd25] hover:text-blue-900 bg-blue-900/40 hover:bg-orange-300 px-4 py-2 rounded-full'>
-                  {user.isAdmin && (
-                    <Link
-                      key={user.id}
-                      href='/admin'
-           >
-                      ADMIN
-                    </Link>
-                  )}
+                <div
+                  key={user.id}
+                  className={`${
+                    user.isAdmin
+                      ? "transition duration-500 font-semibold text-[#ecbd25] hover:text-blue-900 bg-blue-900/40 hover:bg-orange-300 px-4 py-2 rounded-full"
+                      : ""
+                  } `}>
+                  {user.isAdmin && <Link href='/admin'>ADMIN</Link>}
                 </div>
               ))}
 
