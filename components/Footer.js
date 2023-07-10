@@ -48,7 +48,7 @@ const Footer = () => {
           </Link>
           <p>to chat with the developer</p>
         </div>
-        <p className='pt-2'>&copy; COOP Advance. All rights reserved.</p>
+        <p className='pt-2 text-white'>&copy; COOP Advance. All rights reserved.</p>
       </div>
     </div>
   );
