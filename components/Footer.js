@@ -15,7 +15,7 @@ const Footer = () => {
             <p>Advance</p>
           </div>
         </div>
-        <div className='pt-4'>
+        <div className='pt-4 text-white'>
           <p className='text-xl'>Contact Us</p>
           <div className='transition-all duration-700 py-2 flex items-center space-x-6'>
             <div className='border-2 border-gray-600 rounded-full p-2 bg-gray-800 hover:bg-[#0A174E]'>
