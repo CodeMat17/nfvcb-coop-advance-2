@@ -48,7 +48,7 @@ const Footer = () => {
           <Link href='https://wa.me/2348063856120'>
             <BsWhatsapp className={`  text-lg font-semibold `} />
           </Link>
-          <p>to chat with the developer</p>
+          <p>for a business chat with the developer</p>
         </div>
       </div>
     </div>
