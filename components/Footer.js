@@ -41,14 +41,15 @@ const Footer = () => {
         </div>
       </div>
       <div className=' bg-[#0A174E] w-full py-6 text-center '>
-        <div className='flex items-center justify-center space-x-2 text-sm text-gray-500'>
+                <p className=' text-lg text-white'>&copy; COOP Advance. All rights reserved.</p>
+
+        <div className='pt-2 flex items-center justify-center space-x-2 text-sm text-gray-500'>
           <p>Click the icon</p>
           <Link href='https://wa.me/2348063856120'>
             <BsWhatsapp className={`  text-lg font-semibold `} />
           </Link>
           <p>to chat with the developer</p>
         </div>
-        <p className='pt-2 text-white'>&copy; COOP Advance. All rights reserved.</p>
       </div>
     </div>
   );
